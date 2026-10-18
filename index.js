@@ -14,9 +14,10 @@ http.createServer((req, res) => {
 function createBot() {
   const bot = mineflayer.createBot({
     host: 'vixter.aternos.me',
-    port: 58098, // Aternos panelindeki dinamik port numaran
+    port: 58098,
     username: 'AFK_Botu',
-    version: '1.20.1' // 26.3 Fabric sürümünün altındaki Minecraft ana sürümü
+    version: false, // Sürüm denetimini Aternos'un gönderdiği 26.3 yanıtına bırakır
+    checkTimeoutInterval: 60000
   });
 
   bot.on('end', () => {
