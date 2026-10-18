@@ -1,7 +1,7 @@
 const mineflayer = require('mineflayer');
 const http = require('http');
 
-// Render'ın kapanmasını önleyen HTTP sunucusu (Port hatasını çözer)
+// Render'ın kapanmasını önleyen HTTP sunucusu
 const port = process.env.PORT || 3000;
 http.createServer((req, res) => {
   res.writeHead(200, { 'Content-Type': 'text/plain' });
@@ -13,10 +13,10 @@ http.createServer((req, res) => {
 
 function createBot() {
   const bot = mineflayer.createBot({
-    host: 'ERIMYER1234.aternos.me',
+    host: 'vixter.aternos.me', // Yeni Aternos IP adresin
     port: 25565,
     username: 'AFK_Botu',
-    version: false // Sürümü otomatik algılasın
+    version: false // Sürümü otomatik algılar
   });
 
   bot.on('end', () => {
