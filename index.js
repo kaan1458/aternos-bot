@@ -1,17 +1,22 @@
 const mineflayer = require('mineflayer');
 const http = require('http');
 
+// Render'ın kapanmasını önleyen HTTP sunucusu (Port hatasını çözer)
+const port = process.env.PORT || 3000;
 http.createServer((req, res) => {
-  res.write("Bot aktif!");
+  res.writeHead(200, { 'Content-Type': 'text/plain' });
+  res.write("AFK Botu Aktif!");
   res.end();
-}).listen(process.env.PORT || 3000);
+}).listen(port, () => {
+  console.log(`HTTP sunucu ${port} portunda dinleniyor.`);
+});
 
 function createBot() {
   const bot = mineflayer.createBot({
     host: 'ERIMYER1234.aternos.me',
     port: 25565,
     username: 'AFK_Botu',
-    version: '26.3' // <--- Aternos panelinde yazan sürümü buraya yazdık
+    version: false // Sürümü otomatik algılasın
   });
 
   bot.on('end', () => {
